@@ -10,30 +10,68 @@ style="@style/wrapContent"
 a:text="Nothing to see here."
 />
 
-<DatePicker
-style="@style/wrapContent"
-/>
 
+        <!-- Month -->
+        <NumberPicker
+            a:id="@+id/month"
+            a:layout_width="80dip"
+            a:layout_height="wrap_content"
+            a:layout_marginLeft="1dip"
+            a:layout_marginRight="1dip"
+            a:layout_marginStart="1dip"
+            a:layout_marginEnd="1dip"
+            a:focusable="true"
+            a:focusableInTouchMode="true"
+            />
+        <!-- Day -->
+        <NumberPicker
+            a:id="@+id/day"
+            a:layout_width="80dip"
+            a:layout_height="wrap_content"
+            a:layout_marginLeft="1dip"
+            a:layout_marginRight="1dip"
+            a:layout_marginStart="1dip"
+            a:layout_marginEnd="1dip"
+            a:focusable="true"
+            a:focusableInTouchMode="true"
+            />
 <!--
 https://developer.android.com/reference/android/widget/DatePicker.html#attr_android:calendarViewShown
 
-android:calendarTextColor=The text color list of the calendar.
-android:calendarViewShown="false"	Whether the calendar view is shown.
+android:calendarTextColor The text color list of the calendar.
+
+android:calendarViewShown "false"	Whether the calendar view is shown.
+
 android:datePickerMode	Defines the look of the widget.
+
 android:dayOfWeekBackground	The background color for the header's day of week.
+
 android:dayOfWeekTextAppearance	The text color for the header's day of week.
+
 android:endYear	The last year (inclusive), for example "2010".
+
 android:firstDayOfWeek	The first day of week according to Calendar.
+
 android:headerBackground	The background for the selected date header.
+
 android:headerDayOfMonthTextAppearance	The text appearance for the day of month (ex.
+
 android:headerMonthTextAppearance	The text appearance for the month (ex.
+
 android:headerYearTextAppearance	The text appearance for the year (ex.
+
 android:maxDate	The maximal date shown by this calendar view in mm/dd/yyyy format.
+
 android:minDate	The minimal date shown by this calendar view in mm/dd/yyyy format.
+
 android:spinnersShown	Whether the spinners are shown.
+
 android:startYear	The first year (inclusive), for example "1940".
+
 android:yearListItemTextAppearance	The list year's text appearance in the list.
+
 android:yearListSelectorColor		The list year's selected circle color in the list.
+
 -->
 
 <TextView
