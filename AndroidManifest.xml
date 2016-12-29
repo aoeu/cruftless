@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest 
-	package="aoeu.cruftless"
-         xmlns:android="http://schemas.android.com/apk/res/android">
+package="aoeu.cruftless"
+xmlns:a="http://schemas.android.com/apk/res/android"
+>
 
-  <application
-    android:label="@string/app_name"
-    android:theme="@style/AppTheme">
+<application
+a:label="@string/app_name"
+>
 
-    <activity
-      android:name=".Main"
-      android:label="@string/app_name"
-      android:theme="@style/AppTheme">
-      android:launchMode="singleInstance"
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
+<activity
+a:name=".Main"
+a:label="@string/app_name"
+a:launchMode="singleInstance"
+a:theme="@style/Main"
+>
 
-  </application>
+<intent-filter>
+
+<action a:name="android.intent.action.MAIN"/>
+<category a:name="android.intent.category.DEFAULT" />
+<category a:name="android.intent.category.LAUNCHER"/>
+
+</intent-filter>
+
+</activity>
+
+</application>
 
 </manifest>

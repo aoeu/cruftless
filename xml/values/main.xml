@@ -1,34 +1,21 @@
 <resources>
 
-  <!-- Declare custom theme attributes that allow changing which styles are
-         used for button bars depending on the API level.
-         ?android:attr/buttonBarStyle is new as of API 11 so this is
-         necessary to support previous API levels. -->
-  <declare-styleable name="ButtonBarContainerTheme">
-    <attr name="metaButtonBarStyle" format="reference"/>
-    <attr name="metaButtonBarButtonStyle" format="reference"/>
-  </declare-styleable>
+<string name="app_name">cruftless</string>
 
-  <color name="colorPrimary">#FFFFEA</color>
-  <color name="colorPrimaryDark">#EBFFFF</color>
-  <color name="colorAccent">#EBFFFF</color>
+<color name="acmeBody">#FFFFEA</color>
+<color name="acmeTag">#EBFFFF</color>
 
-  <color name="black_overlay">#66000000</color>
+<dimen name="mandatoryWidthForWeightedLayouts">0dp</dimen>
 
-  <dimen name="mandatoryWidthForWeightedLayouts">0dp</dimen>
+<style name="Toolbarless">
+<item name="android:windowActionBar">false</item>
+<item name="android:windowNoTitle">true</item>
+</style>
 
-  <string name="app_name">cruftless</string>
-
-  <string name="title_activity_main">Main</string>
-
-  <style name="AppTheme">
-    <item name="android:windowActionBar">false</item>
-    <item name="android:windowNoTitle">true</item>
-    <item name="android:textSize">24sp</item>
-    <item name="android:textColor">@android:color/black</item>
-    <item name="android:windowBackground">@color/colorPrimary</item>
-    <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="android:windowLightStatusBar">true</item>
-  </style>
+<style name="Main" parent="Toolbarless">
+<item name="android:textSize">24sp</item>
+<item name="android:textColor">@android:color/black</item>
+<item name="android:windowBackground">@color/acmeBody</item>
+</style>
 
 </resources>

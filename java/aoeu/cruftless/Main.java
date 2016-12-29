@@ -27,81 +27,23 @@ class Value<Type> {
 	}
 }
 
-class	Identifier	extends	Value<Integer>	{	Identifier	(Integer i)	{	super(i == null ? 0 : i);	}	}
-class	Runes	extends	Value<String>	{	Runes	(String s)	{	super(s == null ? "" : s);	}	}
-class	AssetPath	extends	Runes		{	AssetPath	(String s)	{	super(s);				}	}
+class Identifier extends Value<Integer> {
+	Identifier(Integer i) { super(i == null ? 0 : i); }	
+}
+
+class Runes extends Value<String> {
+	Runes(String s) { super(s == null ? "" : s); }	
+}
 
 @Override
 public
-void
-onCreate
-(
-	Bundle b
-) 
-{
-	super
-		.onCreate(
-			b
-		);
-	init();
+void onCreate (Bundle b) {
+	super.onCreate(b);
+	setContentView(R.layout.main);
 }
 
-void 
-init
-()
-{
-	setContentView(
-		R.layout.main
-	);
-	( 
-		(TextView) 
-		from	(
-			new Identifier(
-				R.id.nothingToSeeHere
-			)
-		)
-	).setTypeface(
-			from(
-				new AssetPath(
-					"Go-Regular.ttf"
-				)
-			)
-	); 
-}
-
-View 
-from
-(
-	Identifier i
-)
-{
-    	return 
-		findViewById(
-			i.value
-		);
-}
-
-Typeface
-from 
-(
-	AssetPath a
-)
-{
-	try {
-		return 
-			Typeface
-				.createFromAsset(
-					getAssets(), 
-					a.value
-				);
-	} catch (
-		RuntimeException 
-			exceptionForAssetPathNotFound
-	) {
-		return 
-			Typeface
-				.DEFAULT;
-	}
+View from (Identifier i) {
+	return findViewById(i.value);
 }
 
 }
