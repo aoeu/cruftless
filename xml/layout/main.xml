@@ -6,22 +6,16 @@ a:orientation="vertical"
 >
 
 <TextView
-a:layout_width="wrap_content"
-a:layout_height="wrap_content"
+style="@style/wrapContent"
 a:text="Nothing to see here."
 />
 
 <DatePicker
-a:layout_width="wrap_content"
-a:layout_height="wrap_content"
-a:layout_gravity="center"
+style="@style/wrapContent"
 />
 
 <TextView
-a:layout_width="wrap_content"
-a:layout_height="wrap_content"
-
-a:layout_weight="24"
+style="@style/wrapContent"
 a:text="There is no there there."
 />
 
