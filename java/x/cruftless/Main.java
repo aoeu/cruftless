@@ -1,4 +1,4 @@
-package aoeu.cruftless;
+package x.cruftless;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -28,11 +28,11 @@ class Value<Type> {
 }
 
 class Identifier extends Value<Integer> {
-	Identifier(Integer i) { super(i == null ? 0 : i); }	
+	Identifier(Integer i) { super(i == null ? 0 : i); }
 }
 
 class Runes extends Value<String> {
-	Runes(String s) { super(s == null ? "" : s); }	
+	Runes(String s) { super(s == null ? "" : s); }
 }
 
 @Override
