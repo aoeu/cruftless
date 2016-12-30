@@ -1,4 +1,4 @@
-package aoeu.cruftless;
+package x.cruftless;
 
 import android.app.Activity;
 import android.content.Intent;
