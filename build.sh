@@ -34,8 +34,8 @@ main() {
 	createUnalignedAndroidApplicationPackage && \
 	addAndroidRuntimeBytecodeToAndroidApplicationPackage && \
 	signAndroidApplicationPackageWithDebugKey && \
-	alignUncompressedDataInZipFileToFourByteBoundariesForFasterMemoryMappingAtRuntime && \
-    cleanup
+	alignUncompressedDataInZipFileToFourByteBoundariesForFasterMemoryMappingAtRuntime  && \
+	cleanup
 }
 
 makeOutputDirs() {
