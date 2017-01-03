@@ -37,13 +37,22 @@ void onCreate (Bundle b) {
 	setContentView(R.layout.main);
 
 	NumberPicker month = (NumberPicker) from (  new Identifier ( R.id.month ) );
-	month.setMinValue(1);
+	month.setMinValue(0);
 	month.setMaxValue(12);
-	month.setDisplayedValues(new DateFormatSymbols().getMonths());
+	String[] months = new String[13];
+	months[0] = "―";
+	System.arraycopy(new DateFormatSymbols().getMonths(), 0, months, 1, 12);
+	month.setDisplayedValues(months);
 
+	String[] days = new String[32];
+	days[0] = "―";
+	for (int i = 1; i < days.length; i++) {
+		days[i] = Integer.toString(i);
+	}
 	NumberPicker day = (NumberPicker) from ( new Identifier ( R.id.day ) );
-	day.setMinValue(1);
+	day.setMinValue(0);
 	day.setMaxValue(31);
+	day.setDisplayedValues(days);
 }
 
 View from (Identifier i) {
