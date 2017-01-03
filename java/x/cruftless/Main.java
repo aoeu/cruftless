@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 import java.text.DateFormatSymbols;
 
@@ -115,6 +116,15 @@ void onCreate (Bundle b) {
 	NumberPicker dayPicker = (NumberPicker) from ( new Identifier ( R.id.day ) );
 	init(dayPicker, date.day, getDaysAsStrings());
 }
+
+public
+void submit(View v) {
+	NumberPicker monthPicker = (NumberPicker) from (  new Identifier ( R.id.month ) );
+	NumberPicker dayPicker = (NumberPicker) from ( new Identifier ( R.id.day ) );
+	Date d = new Date(new Month(monthPicker.getValue()), new Day(dayPicker.getValue()));
+	Toast.makeText(this, "Month:	" + d.month.value + "	Day:	 "  + d.day.value, Toast.LENGTH_SHORT).show();
+}
+
 
 View from (Identifier i) {
 	return findViewById(i.value);

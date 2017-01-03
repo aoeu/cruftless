@@ -3,12 +3,13 @@ xmlns:a="http://schemas.android.com/apk/res/android"
 a:layout_width="match_parent"
 a:layout_height="match_parent"
 a:orientation="vertical"
+a:gravity="center_vertical"
 >
 
 <LinearLayout
 xmlns:a="http://schemas.android.com/apk/res/android"
 a:layout_width="match_parent"
-a:layout_height="match_parent"
+a:layout_height="wrap_content"
 a:orientation="horizontal"
 a:gravity="center_horizontal"
 >
@@ -32,6 +33,17 @@ a:focusable="true"
 a:focusableInTouchMode="true"
 />
 
+
 </LinearLayout>
+
+
+<Button
+a:layout_width="wrap_content"
+a:layout_height="wrap_content"
+a:text="submit"
+a:onClick="submit"
+a:background="@color/acmeTag"
+a:layout_gravity="center_horizontal"
+/>
 
 </LinearLayout>
