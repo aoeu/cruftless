@@ -31,34 +31,34 @@ class Runes extends Value<String> {
 	Runes(String s) { super(s == null ? "" : s); }
 }
 
-class PositiveRange extends Value<Integer> {
-	static final int empty = 0;
-	static final int min = 1;
+class Ordinal extends Value<Integer> {
+	static final int EMPTY = 0;
+	static final int MIN = 1;
 	final int max;
 
-	PositiveRange(Integer value,  Integer  max) {
-		super(value < PositiveRange.min ||  value > max ? PositiveRange.empty : value);
+	Ordinal(Integer value,  Integer  max) {
+		super(value < Ordinal.MIN ||  value > max ? Ordinal.EMPTY : value);
 		this.max = max;
 	}
 }
 
-class Month extends PositiveRange {
+class Month extends Ordinal {
 	static final int max = 12;
 	Month(Integer value) {
 		super(value, max);
 	}
 	Month() {
-		super(empty, max);
+		super(EMPTY, max);
 	}
 }
 
-class Day extends PositiveRange {
+class Day extends Ordinal {
 	static final int max = 31;
 	Day(Integer value) {
 		super(value, max);
 	}
 	Day() {
-		super(empty, max);
+		super(EMPTY, max);
 	}
 }
 
@@ -77,27 +77,27 @@ class Date {
 String[] getMonthNames() {
 	final int extraLengthForDefaultEmptyValue = 1;
 	String[] names = new String[Month.max + extraLengthForDefaultEmptyValue];
-	names[Month.empty] = "―";
+	names[Month.EMPTY] = "―";
 	final int startIndexOfArrayToCopy = 0;
-	System.arraycopy(new DateFormatSymbols().getMonths(), startIndexOfArrayToCopy, names, Month.min, Month.max);
+	System.arraycopy(new DateFormatSymbols().getMonths(), startIndexOfArrayToCopy, names, Month.MIN, Month.max);
 	return names;
 }
 
 String[] getDaysAsStrings() {
 	final int extraLengthForDefaultEmptyValue = 1;
 	String[] s = new String[Day.max + extraLengthForDefaultEmptyValue];
-	s[Day.empty] = "―";
-	for (int i = Day.min; i <= Day.max; i++) {
+	s[Day.EMPTY] = "―";
+	for (int i = Day.MIN; i <= Day.max; i++) {
 		s[i] = Integer.toString(i);
 	}
 	return s;
 }
 
-void init(NumberPicker picker, PositiveRange range, String[] displayedValues) {
+void init(NumberPicker picker, Ordinal ordinal, String[] displayedValues) {
 	final int extraSpaceForDefaultEmptyValue;
-	picker.setMinValue(range.empty);
-	picker.setMaxValue(range.max);
-	picker.setValue(range.value);
+	picker.setMinValue(Ordinal.EMPTY);
+	picker.setMaxValue(ordinal.max);
+	picker.setValue(ordinal.value);
 	picker.setDisplayedValues(displayedValues);
 }
 
@@ -124,7 +124,6 @@ void submit(View v) {
 	Date d = new Date(new Month(monthPicker.getValue()), new Day(dayPicker.getValue()));
 	Toast.makeText(this, "Month:	" + d.month.value + "	Day:	 "  + d.day.value, Toast.LENGTH_SHORT).show();
 }
-
 
 View from (Identifier i) {
 	return findViewById(i.value);
