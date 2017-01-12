@@ -21,5 +21,8 @@ uninstall:
 start:
 	$(adb) shell am start -n $(packageName)/$(packageName)$(mainActivityName)
 
+log:
+	$(adb) logcat '*:E'
+
 clean:
 	rm $(apkPath)
