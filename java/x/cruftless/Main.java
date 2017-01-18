@@ -79,10 +79,13 @@ class Month extends Ordinal {
 }
 
 Map<Integer, Ordinal> putDaysPerMonth(Map<Integer,Ordinal> m, Calendar c) {
-	int indexOffset = 1;
-	for (int i = c.getMinimum(Calendar.MONTH); i <= c.getMaximum(Calendar.MONTH); i++) {
-		c.set(Calendar.MONTH, i);
-		m.put(i+indexOffset, new Ordinal(0, c.getActualMaximum(Calendar.DAY_OF_MONTH)));
+	int compensationForOffByOneErrorBuiltIntoJustTheMonthFieldOfJavasCalendarAPI = 1;
+	for (int month = c.getMinimum(Calendar.MONTH); month <= c.getMaximum(Calendar.MONTH); month++) {
+		c.set(Calendar.MONTH, month);
+		m.put(
+			month + compensationForOffByOneErrorBuiltIntoJustTheMonthFieldOfJavasCalendarAPI, 
+			new Ordinal(0, c.getActualMaximum(Calendar.DAY_OF_MONTH))
+		);
 	}
         return Collections.unmodifiableMap(m);
 }
@@ -154,11 +157,6 @@ void onCreate (Bundle b) {
 		new NumberPicker.OnValueChangeListener() {
 			Map<Integer, Ordinal> d = getDaysPerGregorianMonthWithLeapYear();
 			public void onValueChange(NumberPicker picker, int prev, int next) {
-
-				String s =  String.format("prev %d / %s, next %d / %s", prev, d.get(prev).value, next, d.get(next).max);
-
-				Toast.makeText(Main.this, s, Toast.LENGTH_SHORT).show();
-
 				if (prev != next && d.get(prev).max != d.get(next).max) {
 					Main.this.init(dayPicker, d.get(next));
 				}
