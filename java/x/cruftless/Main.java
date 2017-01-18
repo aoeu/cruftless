@@ -37,25 +37,20 @@ class Runes extends Value<String> {
 	Runes(String s) { super(s == null ? "" : s); }
 }
 
-class Ordinal extends Value<Integer> {
+abstract class Ordinal extends Value<Integer> {
 	static final int EMPTY = 0;
 	static final int MIN = 1;
 	final int max;
+	
+	final String[] valueRangeAsStrings;
 
 	Ordinal(Integer value,  Integer  max) {
 		super(value < Ordinal.MIN ||  value > max ? Ordinal.EMPTY : value);
 		this.max = max;
+		valueRangeAsStrings = getValueRangeAsStrings();
 	}
 
-	String[] getValueRangeAsStrings() {
-		final int extraLengthForDefaultEmptyValue = 1;
-		String[] s = new String[max + extraLengthForDefaultEmptyValue];
-		s[EMPTY] = "―";
-		for (int i = MIN; i <= max; i++) {
-			s[i] = Integer.toString(i);
-		}
-		return s;
-	}
+	abstract protected String[] getValueRangeAsStrings();
 
 }
 
@@ -68,7 +63,7 @@ class Month extends Ordinal {
 		super(EMPTY, max);
 	}
 
-	String[] getValueRangeAsStrings() {	
+	protected String[] getValueRangeAsStrings() {	
 		final int extraLengthForDefaultEmptyValue = 1;
 		String[] names = new String[Month.max + extraLengthForDefaultEmptyValue];
 		names[Month.EMPTY] = "―";
@@ -78,34 +73,46 @@ class Month extends Ordinal {
 	}
 }
 
-Map<Integer, Ordinal> putDaysPerMonth(Map<Integer,Ordinal> m, Calendar c) {
+Map<Integer, Day> putDaysPerMonth(Map<Integer,Day> m, Calendar c) {
 	int compensationForOffByOneErrorBuiltIntoJustTheMonthFieldOfJavasCalendarAPI = 1;
 	for (int month = c.getMinimum(Calendar.MONTH); month <= c.getMaximum(Calendar.MONTH); month++) {
 		c.set(Calendar.MONTH, month);
 		m.put(
 			month + compensationForOffByOneErrorBuiltIntoJustTheMonthFieldOfJavasCalendarAPI, 
-			new Ordinal(0, c.getActualMaximum(Calendar.DAY_OF_MONTH))
+			new Day(Day.EMPTY, c.getActualMaximum(Calendar.DAY_OF_MONTH))
 		);
 	}
         return Collections.unmodifiableMap(m);
 }
 
-Map<Integer, Ordinal> getDaysPerGregorianMonthWithLeapYear() {
+Map<Integer, Day> getDaysPerGregorianMonthWithLeapYear() {
 	int leapYear = 2004;
 	int day = 1;
 	int month = 1;
-	Map<Integer, Ordinal> map = new HashMap<>();
+	Map<Integer, Day> map = new HashMap<>();
 	map.put(Month.EMPTY, new Day());
 	return putDaysPerMonth(map, new GregorianCalendar(leapYear, month, day));
 }
 
 class Day extends Ordinal {
-	static final int max = 31;
-	Day(Integer value) {
+	static final int defaultMax = 31;
+	Day(Integer value, Integer max) {
 		super(value, max);
 	}
+	Day(Integer value) {
+		super(value, defaultMax);
+	}
 	Day() {
-		super(EMPTY, max);
+		super(EMPTY, defaultMax);
+	}
+	protected String[] getValueRangeAsStrings() {	
+		final int extraLengthForDefaultEmptyValue = 1;
+		String[] s = new String[max + extraLengthForDefaultEmptyValue];
+		s[EMPTY] = "―";
+		for (int i = MIN; i <= max; i++) {
+			s[i] = Integer.toString(i);
+		}
+		return s;
 	}
 }
 
@@ -126,7 +133,7 @@ void init(NumberPicker picker, Ordinal ordinal) {
 	picker.setMaxValue(ordinal.max);
 	picker.setValue(determineValue(picker, ordinal));
 	if (picker.getDisplayedValues() == null) {
-		picker.setDisplayedValues(ordinal.getValueRangeAsStrings());
+		picker.setDisplayedValues(ordinal.valueRangeAsStrings);
 	}
 }
 
@@ -155,7 +162,7 @@ void onCreate (Bundle b) {
 
 	monthPicker.setOnValueChangedListener(
 		new NumberPicker.OnValueChangeListener() {
-			Map<Integer, Ordinal> d = getDaysPerGregorianMonthWithLeapYear();
+			Map<Integer, Day> d = getDaysPerGregorianMonthWithLeapYear();
 			public void onValueChange(NumberPicker picker, int prev, int next) {
 				if (prev != next && d.get(prev).max != d.get(next).max) {
 					Main.this.init(dayPicker, d.get(next));
