@@ -1,25 +1,25 @@
 <LinearLayout
-xmlns:a="http://schemas.android.com/apk/res/android"
-a:layout_width="match_parent"
-a:layout_height="match_parent"
-a:orientation="horizontal"
-a:weightSum="100"
+xmlns:_="http://schemas.android.com/apk/res/android"
+_:layout_width="match_parent"
+_:layout_height="match_parent"
+_:orientation="horizontal"
+_:weightSum="100"
 >
 
 <TextView
-a:layout_width="@dimen/mandatoryWidthForWeightedLayouts"
-a:layout_height="wrap_content"
-a:layout_gravity="center_vertical"
-a:layout_weight="76"
-a:text="Nothing to see here."
+_:layout_width="@dimen/mandatoryWidthForWeightedLayouts"
+_:layout_height="wrap_content"
+_:layout_gravity="center_vertical"
+_:layout_weight="76"
+_:text="Nothing to see here."
 />
 
 <TextView
-a:layout_width="@dimen/mandatoryWidthForWeightedLayouts"
-a:layout_height="wrap_content"
-a:layout_gravity="center_vertical"
-a:layout_weight="24"
-a:text="There is no there there."
+_:layout_width="@dimen/mandatoryWidthForWeightedLayouts"
+_:layout_height="wrap_content"
+_:layout_gravity="center_vertical"
+_:layout_weight="24"
+_:text="There is no there there."
 />
 
 </LinearLayout>
