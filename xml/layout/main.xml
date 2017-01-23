@@ -2,15 +2,11 @@
 xmlns:_="http://schemas.android.com/apk/res/android"
 _:layout_width="match_parent"
 _:layout_height="match_parent"
-_:orientation="horizontal"
-_:weightSum="100"
+_:orientation="vertical"
 >
 
 <TextView
-_:layout_width="@dimen/mandatoryWidthForWeightedLayouts"
-_:layout_height="wrap_content"
-_:layout_gravity="center_vertical"
-_:layout_weight="76"
+style="@style/wrapContent"
 _:text="Nothing to see here."
 />
 
@@ -41,10 +37,7 @@ android:yearListSelectorColor		The list year's selected circle color in the list
 -->
 
 <TextView
-_:layout_width="@dimen/mandatoryWidthForWeightedLayouts"
-_:layout_height="wrap_content"
-_:layout_gravity="center_vertical"
-_:layout_weight="24"
+style="@style/wrapContent"
 _:text="There is no there there."
 />
 
