@@ -11,10 +11,10 @@ filepathOfUnalignedAPK="${filepathOfAPK}.unaligned"
 
 
 # Use the latest build tools version...
-buildTools=$sdk/build-tools/$(ls $sdk/build-tools | sort -n | tail -1)
+buildTools=$sdk/build-tools/$(/bin/ls $sdk/build-tools | sort -n | tail -1)
 
 # ...and the latest platform version.
-platform=$sdk/platforms/$(ls $sdk/platforms | sort -n |tail -1) 
+platform=$sdk/platforms/$(/bin/ls $sdk/platforms | sort -n |tail -1)
 
 
 androidLib=$platform/android.jar
