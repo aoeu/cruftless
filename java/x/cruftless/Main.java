@@ -33,6 +33,22 @@ public
 void onCreate (Bundle b) {
 	super.onCreate(b);
 	setContentView(R.layout.main);
+	android.widget.TextView t = (
+		(android.widget.TextView)
+		from(
+			new Identifier(R.id.butterfly)
+		)
+	);
+        t.setMovementMethod(
+		android.text.method.LinkMovementMethod.getInstance()
+	);
+	t.setText(
+		android.text.Html.fromHtml(
+			"<a href=\"https://en.wikipedia.org/wiki/Bullet_with_Butterfly_Wings\">"
+			+ t.getText()
+			+ "</a>"
+		)
+	);
 }
 
 View from (Identifier i) {

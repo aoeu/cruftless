@@ -15,11 +15,14 @@ _:text="•"
 />
 
 <TextView
+_:id="@+id/butterfly"
 _:layout_width="wrap_content"
 _:layout_height="wrap_content"
 _:layout_marginLeft="10dp"
 _:layout_toRightOf="@id/bullet"
 _:layout_alignTop="@id/bullet"
+_:textColorLink="@android:color/black"
+_:background="@color/acmeTag"
 _:text="Butterfly"
 />
 
