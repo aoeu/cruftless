@@ -1,5 +1,8 @@
 <resources>
 
+<integer name="progress_bar_initial_value">0</integer>
+<integer name="progress_bar_max_value">500</integer>
+
 <string name="app_name">cruftless</string>
 
 <color name="acmeBody">#FFFFEA</color>

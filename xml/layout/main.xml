@@ -2,24 +2,29 @@
 xmlns:_="http://schemas.android.com/apk/res/android"
 _:layout_width="match_parent"
 _:layout_height="match_parent"
-_:orientation="horizontal"
+_:orientation="vertical"
 _:weightSum="100"
+_:gravity="center"
 >
 
-<TextView
-_:layout_width="@dimen/mandatoryWidthForWeightedLayouts"
-_:layout_height="wrap_content"
-_:layout_gravity="center_vertical"
-_:layout_weight="76"
-_:text="Nothing to see here."
+<ProgressBar
+_:id="@+id/progressBar"
+style="?android:attr/progressBarStyleHorizontal"
+_:layout_width="150dp"
+_:layout_height="150dp"
+_:layout_alignParentBottom="true"
+_:layout_centerHorizontal="true"
+_:max="@integer/progress_bar_max_value"
+_:progress="@integer/progress_bar_initial_value"
+_:progressDrawable="@drawable/circular"
 />
 
 <TextView
-_:layout_width="@dimen/mandatoryWidthForWeightedLayouts"
+_:layout_width="wrap_content"
 _:layout_height="wrap_content"
-_:layout_gravity="center_vertical"
-_:layout_weight="24"
-_:text="There is no there there."
+_:text="Do it"
+_:onClick="animateProgressRing"
 />
+
 
 </LinearLayout>
